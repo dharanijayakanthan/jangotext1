@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myMovieApp">
+  <head>
+    <title>FAVMOVIES</title>
+
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<script src ="app\lib\angular.min.js"></script>
+<script src="app\app.js"></script>
+
+  </head>
+  <body>
+    <header ng-include="'header.html'"> </header>
+<div class="content">
+    <div ng-controller = "MovieController">
+      <input type = "text" ng-model='search' placeholder="search for movies"/>
+<ul>
+
+  <li ng-repeat = "mo in movies | orderBy:'rating' | filter: search "ng-show= '!mo.favorite'"">
+
+<div class="remove" ng-click="rmovie(mo)">remove<h1>*</h1></div>
+
+
+  <h4><b>{{mo.title}} </b>
+    --
+    <b>{{mo.releaseMonth | currency: '*'}}<b></h4></li>
+<li ng-repeat = "mo in movies"><h4>{{mo.title}}</h4>
+<input type="checkbox" ng-model="mySel">
+<h1>{{ng-selected="mySel"}}</h1>
+</li>
+</ul>
+
+
+
+    </div>
+  </div>
+  </body>
+</html>
